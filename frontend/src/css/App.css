@@ -1,0 +1,27 @@
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: var(--content-padding);
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 22px auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  color: var(--text);
+  min-height: calc(100vh - 84px);
+  overflow: auto;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    padding: 18px;
+    margin: 14px;
+    min-height: calc(100vh - 64px);
+  }
+}

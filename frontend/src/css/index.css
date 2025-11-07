@@ -1,0 +1,158 @@
+/* index.css - merged and theme-enabled version
+   - preserves original font stack, resets and prefers-color-scheme behavior
+   - adds CSS variables (design tokens) for the cinematic theme
+   - keeps accessibility & focus styles
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  /* typography & base */
+  --font-sans: Inter, Poppins, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* color scheme tokens (dark default) */
+  color-scheme: dark;
+  --bg: #0b0f17;           /* deep cinematic background */
+  --surface: #0f1720;      /* panels / cards */
+  --muted: #9aa3b2;        /* secondary text */
+  --text: rgba(255, 255, 255, 0.87); /* primary text color */
+  --accent: #ff4b2b;       /* primary CTA */
+  --accent-2: #00d4ff;     /* secondary accent */
+  --glass: rgba(255,255,255,0.04);
+  --radius: 12px;
+  --card-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  --glass-blur: 6px;
+  --content-max: 1200px;
+  --content-padding: 28px;
+
+  /* legacy compatibility (kept from your file) */
+  color: var(--text);
+  background-color: #242424; /* fallback background until body background applied */
+}
+
+/* Respect user's system preference for light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    /* light mode tokens */
+    --bg: #ffffff;
+    --surface: #f7fafc;
+    --muted: #64748b;
+    --text: #213547;
+    --accent: #646cff;
+    --accent-2: #535bf2;
+    --glass: rgba(0,0,0,0.02);
+    --card-shadow: 0 8px 24px rgba(16,24,40,0.06);
+    background-color: #000000; /* solid black */
+ /* keep original behavior */
+  }
+
+  a:hover { color: var(--accent-2); }
+  button { background-color: #f9f9f9; }
+}
+
+/* Global resets & utilities */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  font-family: var(--font-sans);
+  color: var(--text);
+  /* more cinematic background while still respecting prefers-color-scheme */
+  body {
+  background-color: #000000; /* solid black page background */
+}
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
+
+/* App root container */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Links and headings (preserve original semantics) */
+a {
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: inherit;
+  transition: color .18s ease;
+}
+a:hover {
+  color: var(--accent-2);
+}
+
+/* Headings */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+/* Buttons - preserved behavior but themed */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: rgba(255,255,255,0.02);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.12s ease, box-shadow 0.12s ease;
+}
+button:hover {
+  border-color: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Small utility classes */
+.hidden { display: none !important; }
+.center { display:flex; justify-content:center; align-items:center; }
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  width: 100%;
+}
+
+/* Accessibility improvements: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* Keep the original hover colors fallback (from your file) */
+@media (prefers-color-scheme: light) {
+  a:hover { color: #747bff; }
+}
+
+/* End of index.css */

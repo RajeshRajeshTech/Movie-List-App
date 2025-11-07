@@ -1,0 +1,121 @@
+/* ================================
+   Favorites Page (Cinematic Design)
+   ================================ */
+
+.favorites {
+  padding: var(--content-padding);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Section Title */
+.favorites h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  letter-spacing: 1px;
+}
+
+/* Grid Layout for Favorite Movies */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+  justify-items: center;
+}
+
+/* Empty State Card */
+.favorites-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.05));
+  border-radius: var(--radius);
+  margin: 2rem auto;
+  max-width: 600px;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.favorites-empty:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Empty State Text */
+.favorites-empty h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.favorites-empty p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* Subtle CTA Button */
+.favorites-empty button {
+  margin-top: 1.6rem;
+  padding: 0.8rem 1.6rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+.favorites-empty button:hover {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transform: translateY(-2px);
+}
+
+/* Fade-In Animation for new favorites */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.movies-grid > * {
+  animation: fadeIn 0.35s ease-out forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .favorites {
+    padding: 1.5rem;
+  }
+
+  .favorites h2 {
+    font-size: 1.6rem;
+  }
+
+  .favorites-empty {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .favorites-empty h2 {
+    font-size: 1.4rem;
+  }
+}
