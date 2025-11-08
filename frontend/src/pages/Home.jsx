@@ -13,15 +13,16 @@ function Home() {
     const loadPopularMovies = async () => {
       try {
         const popularMovies = await getPopularMovies();
+        console.log(popularMovies);
         setMovies(popularMovies);
       } catch (err) {
         console.log(err);
-        setError("Failed to load movies...");
+        setError("Failed to load  movies...");
       } finally {
         setLoading(false);
       }
     };
-
+    console.log("dsfkjdfskg");
     loadPopularMovies();
   }, []);
 
@@ -33,6 +34,7 @@ function Home() {
     setLoading(true)
     try {
         const searchResults = await searchMovies(searchQuery)
+
         setMovies(searchResults)
         setError(null)
     } catch (err) {
@@ -65,7 +67,7 @@ function Home() {
       ) : (
         <div className="movies-grid">
           {movies.map((movie) => (
-            <MovieCard movie={movie} key={movie.id} />
+            <MovieCard movie={movie} key={movie.id || movie.imdbID} />
           ))}
         </div>
       )}
